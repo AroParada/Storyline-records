@@ -1,9 +1,12 @@
 import Slider from "../components/Slider";
-import Featured from '../components/Featured'
+import Featured from "../components/Featured";
+import { Container } from "react-bootstrap";
 
 export function Home() {
-  return <div>
-    <Slider />
-    <Featured />
-    </div>
+  return (
+    <Container fluid>
+      <Slider />
+      <Featured />
+    </Container>
+  );
 }

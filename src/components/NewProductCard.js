@@ -14,7 +14,7 @@ function NewProductCard(props) {
   return (
     <Card variation="elevated">
       <Flex alignItems="flex-start">
-        <Image src={product.image} alt="Amplify" width="8rem" />
+        <Image src={product.image} alt="Amplify" width="10rem" />
         <Flex direction="column" gap="xs">
           <Flex>
             <Badge variation="success">New</Badge>
