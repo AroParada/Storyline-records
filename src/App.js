@@ -4,7 +4,6 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
-import NavBar from "./NavBar";
 import { Contact } from "./pages/Contact";
 import Shop from "./pages/Shop";
 import CartProvider from "./CartContext";
@@ -16,7 +15,6 @@ function App() {
     <CartProvider>
       <div className="app-wrapper">
         <BrandBar />
-        <NavBar />
         <main className="content">
           <Routes>
             <Route path="/" element={<Home key='home' />} />

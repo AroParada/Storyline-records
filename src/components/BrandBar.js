@@ -1,8 +1,9 @@
-import { Button, Container, Navbar, Modal } from "react-bootstrap";
-// import { Button } from "@aws-amplify/ui-react"
+import React from "react";
 import { useState, useContext } from "react";
+import { Button, Container, Navbar, Modal, Offcanvas , Nav } from "react-bootstrap";
 import { CartContext } from "../CartContext";
 import CartProduct from "./CartProduct";
+import { Link } from "react-router-dom";
 
 function BrandBar() {
   const cart = useContext(CartContext);
@@ -12,20 +13,22 @@ function BrandBar() {
   const handleShow = () => setShow(true);
 
   const checkout = async () => {
-    await fetch('http://localhost:4000/checkout', {
-      method: 'POST',
-      headers:{
-        'Content-type': 'application/json'
+    await fetch("http://localhost:4000/checkout", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
       },
-      body: JSON.stringify({items: cart.items})
-    } ).then((response) => {
-      return response.json();
-    }).then((response) => {
-      if(response.url) {
-        window.location.assign(response.url); // Foward user to stripe
-      }
+      body: JSON.stringify({ items: cart.items }),
     })
-  }
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        if (response.url) {
+          window.location.assign(response.url); // Foward user to stripe
+        }
+      });
+  };
 
   const productsCount = cart.items.reduce(
     (sum, product) => sum + product.quantity,
@@ -34,13 +37,48 @@ function BrandBar() {
 
   return (
     <>
-      <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand href="/">
-            Storyline Records &#128216;
-          </Navbar.Brand>
+      <Navbar
+        bg="dark"
+        variant="dark"
+        key="sm"
+        expand="sm"
+        className="bg-body-tertiary mb-3"
+      >
+        <Container fluid>
+          <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-sm`} />
+          <Navbar.Brand href="/">Storyline Records &#128216;</Navbar.Brand>
+
+          <Button className="d-sm-none mt-1" onClick={handleShow}>
+            Cart ({productsCount}) Items
+          </Button>
+          <Navbar.Offcanvas
+            id={`offcanvasNavbar-expand-sm`}
+            aria-labelledby={`offcanvasNavbarLabel-expand-sm`}
+            placement="start"
+          >
+            <Offcanvas.Header closeButton>
+              <Offcanvas.Title id={`offcanvasNavbarLabel-expand-sm`}>
+                Storyline Records
+              </Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+              <Nav className="justify-content-end flex-grow-1 pe-2">
+                <Nav.Link as={Link} to="/">
+                  Home
+                </Nav.Link>
+                <Nav.Link as={Link} to="/Shop">
+                  Shop
+                </Nav.Link>
+                <Nav.Link as={Link} to="/Login">
+                  Login
+                </Nav.Link>
+                <Button onClick={handleShow}>
+                  Cart ({productsCount}) Items
+                </Button>
+              </Nav>
+            </Offcanvas.Body>
+          </Navbar.Offcanvas>
         </Container>
-        <Button onClick={handleShow}>Cart ({productsCount}) Items</Button>
       </Navbar>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

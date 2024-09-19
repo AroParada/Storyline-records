@@ -24,7 +24,7 @@
 }
 
 .amplify-card {
-  text-align: center !important
+  text-align: center !important;
 }
 
 #app {
@@ -76,4 +76,8 @@ body {
 
 .modal {
   backdrop-filter: blur(4px);
+}
+
+.offcanvas.offcanvas-start {
+  width: fit-content !important;
 }
