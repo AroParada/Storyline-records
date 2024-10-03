@@ -1,29 +1,6 @@
 {
-  "api": {
-    "fictionalrecords": {
-      "dependsOn": [],
-      "output": {
-        "authConfig": {
-          "additionalAuthenticationProviders": [
-            {
-              "authenticationType": "AWS_IAM"
-            }
-          ],
-          "defaultAuthentication": {
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 30,
-              "description": "api key description"
-            },
-            "authenticationType": "API_KEY"
-          }
-        }
-      },
-      "providerPlugin": "awscloudformation",
-      "service": "AppSync"
-    }
-  },
   "auth": {
-    "fictionalrecords": {
+    "storylinerecords63b45f3a": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -32,20 +9,13 @@
           "SMS"
         ],
         "passwordProtectionSettings": {
-          "passwordPolicyCharacters": [
-            "REQUIRES_LOWERCASE",
-            "REQUIRES_NUMBERS",
-            "REQUIRES_SYMBOLS",
-            "REQUIRES_UPPERCASE"
-          ],
+          "passwordPolicyCharacters": [],
           "passwordPolicyMinLength": 8
         },
         "signupAttributes": [
           "EMAIL"
         ],
-        "socialProviders": [
-          "GOOGLE"
-        ],
+        "socialProviders": [],
         "usernameAttributes": [
           "EMAIL"
         ],
@@ -55,32 +25,6 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
-    }
-  },
-  "parameters": {
-    "AMPLIFY_storage_fictionalrecordsce24a5e6_bucketName": {
-      "usedBy": [
-        {
-          "category": "storage",
-          "resourceName": "fictionalrecordsce24a5e6"
-        }
-      ]
-    },
-    "AMPLIFY_storage_fictionalrecordsce24a5e6_region": {
-      "usedBy": [
-        {
-          "category": "storage",
-          "resourceName": "fictionalrecordsce24a5e6"
-        }
-      ]
-    }
-  },
-  "storage": {
-    "fictionalrecordsce24a5e6": {
-      "dependsOn": [],
-      "providerPlugin": "awscloudformation",
-      "service": "S3",
-      "serviceType": "imported"
     }
   }
 }
