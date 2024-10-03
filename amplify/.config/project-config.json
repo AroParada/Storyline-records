@@ -1,12 +1,8 @@
 {
-<<<<<<< HEAD
   "providers": [
     "awscloudformation"
   ],
   "projectName": "Fictionalrecords",
-=======
-  "projectName": "storylineRecords",
->>>>>>> 3894905b04b5f54e2d9ecaf954eb479a28986f5a
   "version": "3.1",
   "frontend": "javascript",
   "javascript": {
