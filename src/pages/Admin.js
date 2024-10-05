@@ -4,30 +4,66 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export function Admin() {
+  const [addedProduct, setAddedProduct] = useState(null);
+
   const artist = useRef();
   const title = useRef();
   const price = useRef();
   const image = useRef();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const formValues = {
+      id: uuidv4(),
       artist: artist.current.value.trim(),
       title: title.current.value.trim(),
-      price: price.current.value.trim(),
+      price: parseFloat(price.current.value.trim()),
       image: image.current.files[0],
     };
-    console.log(formValues, "form values");
+    setAddedProduct(formValues);
+
+    await addProduct(formValues);
 
     // Resetting form values after submission
     artist.current.value = "";
     title.current.value = "";
     price.current.value = "";
     image.current.value = null;
+  };
+
+  const addProduct = async (formValues) => {
+    try {
+      const payLoad = {
+        id: formValues.id,
+        artist: formValues.artist,
+        title: formValues.title,
+        price: formValues.price,
+      };
+
+      const response = await fetch(
+        "https://1rsmflpz2m.execute-api.us-east-1.amazonaws.com/items",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json", // Set the content type to JSON
+          },
+          body: JSON.stringify(payLoad),
+        }
+      );
+
+      // const textResponse = await response.text(); // Get the response as text
+      // console.log("Response Text: ", textResponse);
+
+      const data = await response.json();
+      console.log("data: ", data);
+    } catch (error) {
+      console.log("failed to add product", error);
+    }
   };
 
   return (
