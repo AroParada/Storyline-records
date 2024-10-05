@@ -4,12 +4,17 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
+import AWS from "aws-sdk";
+
+AWS.config.update({
+  accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID, // Store keys in environment variables for security
+  secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
+  region: "us-east-1", // Replace with your region
+});
 
 export function Admin() {
-  const [addedProduct, setAddedProduct] = useState(null);
-
   const artist = useRef();
   const title = useRef();
   const price = useRef();
@@ -25,7 +30,12 @@ export function Admin() {
       price: parseFloat(price.current.value.trim()),
       image: image.current.files[0],
     };
-    setAddedProduct(formValues);
+
+    // uploads the image to s3 and get the URL
+    const imageUrl = await uploadImageToS3(formValues.image);
+
+    // adds the imageUrl to the formValues
+    formValues.image = imageUrl;
 
     await addProduct(formValues);
 
@@ -36,6 +46,31 @@ export function Admin() {
     image.current.value = null;
   };
 
+  const uploadImageToS3 = async (file) => {
+    const s3BucketName =
+      "fictionalrecords004232c4232647c6a10668cb4de31c163357-staging";
+    const s3Key = `${file.name}`;
+
+    console.log(file); // Checking if file is undefined or has the expected value
+
+    const params = {
+      Bucket: s3BucketName,
+      Key: s3Key,
+      Body: file,
+      ContentType: file.type,
+    };
+
+    try {
+      const s3 = new AWS.S3();
+      await s3.upload(params).promise();
+
+      return `https://${s3BucketName}.s3.amazonaws.com/${s3Key}`;
+    } catch (error) {
+      console.log("Error uploading image to s3:", error);
+      throw new Error("Image upload failed");
+    }
+  };
+
   const addProduct = async (formValues) => {
     try {
       const payLoad = {
@@ -43,6 +78,7 @@ export function Admin() {
         artist: formValues.artist,
         title: formValues.title,
         price: formValues.price,
+        image: formValues.image,
       };
 
       const response = await fetch(
@@ -55,9 +91,6 @@ export function Admin() {
           body: JSON.stringify(payLoad),
         }
       );
-
-      // const textResponse = await response.text(); // Get the response as text
-      // console.log("Response Text: ", textResponse);
 
       const data = await response.json();
       console.log("data: ", data);
