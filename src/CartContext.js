@@ -4,10 +4,12 @@ export const CartContext = createContext({
   items: [],
   products: [],
   loading: true,
+  cartDetails: [],
   getProductData: () => {},
   getProductQuantity: () => {},
   addOneToCart: () => {},
   removeOneFromCart: () => {},
+  addOrUpdateCartItem: () => {},
   getTotalCost: () => {},
 });
 
@@ -15,7 +17,44 @@ export function CartProvider({ children }) {
   const [cartProducts, setCartProducts] = useState([]);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [cartDetails, setCartDetails] = useState([]);
 
+  console.log(cartDetails, 'cartdetails');
+
+  function addOrUpdateCartItem(id, quantity) {
+    const productData = getProductData(id);
+
+    setCartDetails((prevDetails) => {
+      const existingItemIndex = prevDetails.findIndex((item) => item.id === id);
+
+      if (existingItemIndex !== -1) {
+        // update existing item quantity and totalPrice
+        const updatedDetails = [...prevDetails];
+        updatedDetails[existingItemIndex] = {
+          ...updatedDetails[existingItemIndex],
+          quantity: updatedDetails[existingItemIndex].quantity + quantity,
+          totalPrice:
+            (updatedDetails[existingItemIndex].quantity + quantity) *
+            productData.price,
+        };
+        return updatedDetails;
+      } else {
+        // add new item
+      }
+      return [
+        ...prevDetails,
+        {
+          id,
+          title: productData.title,
+          image: productData.image,
+          quantity,
+          totalPrice: quantity * productData.price,
+        },
+      ];
+    });
+  }
+
+  // fetches products from DynamoDB
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -33,19 +72,13 @@ export function CartProvider({ children }) {
     fetchProducts();
   }, []);
 
-  console.log(products, 'products');
-
+  // gets the ids corresponding data
   function getProductData(id) {
     let productData = products.find((product) => product.id === id);
-
-    if (!productData) {
-      console.log("product data does not exist for ID: " + id);
-      return undefined;
-    }
-
-    return productData;
+    return productData || undefined;
   }
 
+  // Get the quantity of a specific product in the cart
   // [  { id: 1 , quantity: 2 } ]
   function getProductQuantity(id) {
     // if the .find get an undefined bject we wont ask for the .quantity to aviod error
@@ -62,7 +95,6 @@ export function CartProvider({ children }) {
 
   function addOneToCart(id) {
     const quantity = getProductQuantity(id);
-
     if (quantity === 0) {
       // product is not in cart
       setCartProducts([
@@ -83,6 +115,7 @@ export function CartProvider({ children }) {
         )
       );
     }
+    addOrUpdateCartItem(id, 1);
   }
 
   function removeOneFromCart(id) {
@@ -100,6 +133,7 @@ export function CartProvider({ children }) {
         )
       );
     }
+    addOrUpdateCartItem(id, 1);
   }
 
   function deleteFromCart(id) {
@@ -108,6 +142,9 @@ export function CartProvider({ children }) {
       cartProducts.filter((currentProduct) => {
         return currentProduct.id !== id;
       })
+    );
+    setCartDetails((prevDetails) =>
+      prevDetails.filter((item) => item.id !== id)
     );
   }
 
@@ -124,11 +161,13 @@ export function CartProvider({ children }) {
     items: cartProducts,
     products,
     loading,
+    cartDetails,
     getProductData,
     getProductQuantity,
     addOneToCart,
     removeOneFromCart,
     deleteFromCart,
+    addOrUpdateCartItem,
     getTotalCost,
   };
 

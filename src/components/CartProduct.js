@@ -6,14 +6,14 @@ import { CartContext } from "../CartContext";
 
 function CartProduct(props) {
   const { getProductData, deleteFromCart } = useContext(CartContext);
-  const id = props.id;
-  const quantity = props.quantity;
+  const { id, quantity } = props;
   const productData = getProductData(id);
 
   if (!productData) {
     return <p>product not found</p>;
   }
 
+  // clean code later to render all information from cartcontext
   return (
     <Flex alignItems="flex-start">
       <Image src={productData.image} alt={productData.title} width="8rem" />
