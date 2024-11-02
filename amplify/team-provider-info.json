@@ -1,0 +1,14 @@
+{
+  "main": {
+    "categories": {
+      "function": {
+        "stripeCheckout": {
+          "reactAppStripeSecretKey": "process.env.REACT_APP_STRIPE_SECRET_KEY"
+        }
+      },
+      "auth": {
+        "storylinerecords63b45f3a": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "Resources": {
+    "LambdaFunction": {
+      "Properties": {
+        "Environment": {
+          "Variables": {
+            "REACT_APP_STRIPE_SECRET_KEY": {
+              "Ref": "reactAppStripeSecretKey"
+            }
+          }
+        }
+      }
+    }
+  },
+  "Parameters": {
+    "reactAppStripeSecretKey": {
+      "Type": "String"
+    }
+  }
+}
