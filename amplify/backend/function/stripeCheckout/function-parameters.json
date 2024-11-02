@@ -1,0 +1,8 @@
+{
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "reactAppStripeSecretKey",
+      "environmentVariableName": "REACT_APP_STRIPE_SECRET_KEY"
+    }
+  ]
+}

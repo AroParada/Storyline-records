@@ -53,31 +53,7 @@
     }
   },
   "parameters": {
-    "AMPLIFY_function_stripeCheckout_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "stripeCheckout"
-        }
-      ]
-    },
-    "AMPLIFY_function_stripeCheckout_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "stripeCheckout"
-        }
-      ]
-    },
-    "AMPLIFY_function_stripeCheckout_secretsPathAmplifyAppId": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "stripeCheckout"
-        }
-      ]
-    },
-    "AMPLIFY_function_stripeCheckout_stripeSecretKey": {
+    "AMPLIFY_function_stripeCheckout_reactAppStripeSecretKey": {
       "usedBy": [
         {
           "category": "function",
