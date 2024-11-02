@@ -2,8 +2,10 @@ import { loadStripe } from "@stripe/stripe-js";
 import { useContext } from "react";
 import { CartContext } from "../CartContext";
 
-console.log(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY); // Replace with your Stripe Publishable Key
+
+const stripePromise = loadStripe(
+  process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY
+);
 
 const CheckoutButton = () => {
   const cart = useContext(CartContext);

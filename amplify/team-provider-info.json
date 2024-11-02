@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "dev": {
     "awscloudformation": {
       "AuthRoleName": "amplify-fictionalrecords-dev-24750-authRole",
@@ -13,3 +14,18 @@
     }
   }
 }
+=======
+  "main": {
+    "categories": {
+      "function": {
+        "stripeCheckout": {
+          "reactAppStripeSecretKey": "process.env.REACT_APP_STRIPE_SECRET_KEY"
+        }
+      },
+      "auth": {
+        "storylinerecords63b45f3a": {}
+      }
+    }
+  }
+}
+>>>>>>> f537ee6a7033976fcb47432ca73aa1ecfde503f0
