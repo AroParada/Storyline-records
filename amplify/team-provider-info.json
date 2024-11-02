@@ -1,15 +1,32 @@
 {
-  "dev": {
+  "main": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-fictionalrecords-dev-31040-authRole",
-      "UnauthRoleArn": "arn:aws:iam::288547371684:role/amplify-fictionalrecords-dev-31040-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::288547371684:role/amplify-fictionalrecords-dev-31040-authRole",
+      "AuthRoleName": "amplify-fictionalrecords-main-16c2b-authRole",
+      "UnauthRoleArn": "arn:aws:iam::288547371684:role/amplify-fictionalrecords-main-16c2b-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::288547371684:role/amplify-fictionalrecords-main-16c2b-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-fictionalrecords-dev-31040-deployment",
-      "UnauthRoleName": "amplify-fictionalrecords-dev-31040-unauthRole",
-      "StackName": "amplify-fictionalrecords-dev-31040",
-      "StackId": "arn:aws:cloudformation:us-east-1:288547371684:stack/amplify-fictionalrecords-dev-31040/91cd2f80-98e9-11ef-a153-12d4a977d381",
-      "AmplifyAppId": "d3ndx8ayri3knw"
+      "DeploymentBucketName": "amplify-fictionalrecords-main-16c2b-deployment",
+      "UnauthRoleName": "amplify-fictionalrecords-main-16c2b-unauthRole",
+      "StackName": "amplify-fictionalrecords-main-16c2b",
+      "StackId": "arn:aws:cloudformation:us-east-1:288547371684:stack/amplify-fictionalrecords-main-16c2b/f6a7bca0-8141-11ef-b0ce-1276ed69a95b",
+      "AmplifyAppId": "d1iwbw9s8g6u0e"
+    },
+    "categories": {
+      "auth": {
+        "fictionalrecords": {
+          "userPoolId": "us-east-1_rmjQL1hxU",
+          "userPoolName": "fictionalrecordse28ac7b0_userpool_e28ac7b0-dev",
+          "webClientId": "qh2j9c4btje5ka6fcbvlrqu43",
+          "nativeClientId": "2h1ght2lhm6gv5vjb2bucfvu2s",
+          "identityPoolId": "us-east-1:133e97f0-711d-442b-aae4-997d37e03fc8",
+          "identityPoolName": "fictionalrecordse28ac7b0_identitypool_e28ac7b0__dev",
+          "allowUnauthenticatedIdentities": false,
+          "authRoleArn": "arn:aws:iam::288547371684:role/amplify-fictionalrecords-dev-31040-authRole",
+          "authRoleName": "amplify-fictionalrecords-dev-31040-authRole",
+          "unauthRoleArn": "arn:aws:iam::288547371684:role/amplify-fictionalrecords-dev-31040-unauthRole",
+          "unauthRoleName": "amplify-fictionalrecords-dev-31040-unauthRole"
+        }
+      }
     }
   }
 }
