@@ -87,7 +87,6 @@ function BrandBar() {
               ))}
               {/* tofixed adds only 2 values after the decimal */}
               <h1>Total: {cart.getTotalCost().toFixed(2)}</h1>
-              <Button variant="success">Purchase items</Button>
               <CheckoutButton />
             </>
           ) : (

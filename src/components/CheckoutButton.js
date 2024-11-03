@@ -1,11 +1,9 @@
 import { loadStripe } from "@stripe/stripe-js";
 import { useContext } from "react";
 import { CartContext } from "../CartContext";
+import { Button } from "react-bootstrap";
 
-
-const stripePromise = loadStripe(
-  process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY
-);
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
 const CheckoutButton = () => {
   const cart = useContext(CartContext);
@@ -40,7 +38,7 @@ const CheckoutButton = () => {
     }
   };
 
-  return <button onClick={handleCheckout}>Checkout</button>;
+  return <Button onClick={handleCheckout}>Checkout</Button>;
 };
 
 export default CheckoutButton;
