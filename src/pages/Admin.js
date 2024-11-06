@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import AWS from "aws-sdk";
 
@@ -19,6 +19,14 @@ export function Admin() {
   const title = useRef();
   const price = useRef();
   const image = useRef();
+
+  const [imagePreview, setImagePreview] = useState(null);
+
+  const onImageChange = (event) => {
+    if (event.target.files && event.target.files[0]) {
+      setImagePreview(URL.createObjectURL(event.target.files[0]));
+    }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -41,7 +49,6 @@ export function Admin() {
 
     // Resetting form values after submission
     alert('Added Product')
-    
     artist.current.value = "";
     title.current.value = "";
     price.current.value = "";
@@ -133,7 +140,12 @@ export function Admin() {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formFile">
                   <Form.Label>Image</Form.Label>
-                  <Form.Control type="file" ref={image} />
+                  <Form.Control
+                    onChange={onImageChange}
+                    type="file"
+                    ref={image}
+                  />
+                  <img className="previewImage" alt="preview image" src={imagePreview} />
                 </Form.Group>
                 <Button variant="primary" type="submit">
                   Submit

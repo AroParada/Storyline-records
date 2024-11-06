@@ -81,3 +81,8 @@ body {
 .offcanvas.offcanvas-start {
   width: fit-content !important;
 }
+
+.previewImage {
+  width: 50%;
+  height: auto;
+}
