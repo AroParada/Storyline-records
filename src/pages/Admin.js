@@ -40,6 +40,8 @@ export function Admin() {
     await addProduct(formValues);
 
     // Resetting form values after submission
+    alert('Added Product')
+    
     artist.current.value = "";
     title.current.value = "";
     price.current.value = "";
@@ -105,7 +107,7 @@ export function Admin() {
         <Col></Col>
         <Col xs={8}>
           <Card className="text-center">
-            <Card.Header>Featured</Card.Header>
+            <Card.Header>Upload new product</Card.Header>
             <Card.Body>
               <Card.Title>Add a new product</Card.Title>
               <Form onSubmit={handleSubmit}>
