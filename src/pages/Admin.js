@@ -48,7 +48,7 @@ export function Admin() {
     await addProduct(formValues);
 
     // Resetting form values after submission
-    alert('Added Product')
+    alert("Added Product");
     artist.current.value = "";
     title.current.value = "";
     price.current.value = "";
@@ -145,7 +145,13 @@ export function Admin() {
                     type="file"
                     ref={image}
                   />
-                  <img className="previewImage" alt="preview image" src={imagePreview} />
+                  {imagePreview === null ? null : (
+                    <img
+                      className="previewImage"
+                      alt="preview"
+                      src={imagePreview}
+                    />
+                  )}
                 </Form.Group>
                 <Button variant="primary" type="submit">
                   Submit
