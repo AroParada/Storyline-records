@@ -86,3 +86,12 @@ body {
   width: 50%;
   height: auto;
 }
+
+.adminCard {
+  display: grid;
+  place-self: center;
+  height: 100% ;
+  width: 400px; 
+  border-color: none !important;
+  box-shadow: 5px 2px 15px 2px hwb(0 83% 17%);
+}

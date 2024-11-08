@@ -113,7 +113,7 @@ export function Admin() {
       <Row>
         <Col></Col>
         <Col xs={8}>
-          <Card className="text-center">
+          <Card className="text-center adminCard">
             <Card.Header>Upload new product</Card.Header>
             <Card.Body>
               <Card.Title>Add a new product</Card.Title>
