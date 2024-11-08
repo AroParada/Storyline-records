@@ -83,6 +83,7 @@ body {
 }
 
 .previewImage {
+  margin: 20px;
   width: 50%;
   height: auto;
 }
@@ -94,4 +95,5 @@ body {
   width: 400px; 
   border-color: none !important;
   box-shadow: 5px 2px 15px 2px hwb(0 83% 17%);
+  margin: 20px;
 }
