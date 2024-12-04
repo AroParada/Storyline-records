@@ -121,6 +121,7 @@ export function Admin() {
                 <Form.Group className="mb-3" controlId="formArtistName">
                   <Form.Label>Artist name</Form.Label>
                   <Form.Control
+                    required
                     type="text"
                     placeholder="Enter artist name"
                     ref={artist}
@@ -129,6 +130,7 @@ export function Admin() {
                 <Form.Group className="mb-3" controlId="formAlbumTitle">
                   <Form.Label>Album title</Form.Label>
                   <Form.Control
+                    required
                     type="text"
                     placeholder="Album Title"
                     ref={title}
@@ -136,11 +138,17 @@ export function Admin() {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formPrice">
                   <Form.Label>Price</Form.Label>
-                  <Form.Control type="number" placeholder="Price" ref={price} />
+                  <Form.Control
+                    required
+                    type="number"
+                    placeholder="Price"
+                    ref={price}
+                  />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formFile">
                   <Form.Label>Image</Form.Label>
                   <Form.Control
+                    required
                     onChange={onImageChange}
                     type="file"
                     ref={image}
