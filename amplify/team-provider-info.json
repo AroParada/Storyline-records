@@ -25,7 +25,8 @@
           "authRoleName": "amplify-fictionalrecords-dev-31040-authRole",
           "unauthRoleArn": "arn:aws:iam::288547371684:role/amplify-fictionalrecords-dev-31040-unauthRole",
           "unauthRoleName": "amplify-fictionalrecords-dev-31040-unauthRole"
-        }
+        },
+        "Fictionalrecords": {}
       }
     }
   }
