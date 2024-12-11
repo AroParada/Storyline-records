@@ -91,9 +91,13 @@ body {
 .adminCard {
   display: grid;
   place-self: center;
-  height: 100% ;
-  width: 400px; 
+  height: 100%;
+  width: 400px;
   border-color: none !important;
   box-shadow: 5px 2px 15px 2px hwb(0 83% 17%);
   margin: 20px;
+}
+
+.cartButton {
+  background-color: #047D95 !important;
 }

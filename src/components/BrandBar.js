@@ -38,8 +38,8 @@ function BrandBar() {
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-sm`} />
           <Navbar.Brand href="/">Storyline Records &#128216;</Navbar.Brand>
 
-          <Button className="d-sm-none mt-1" onClick={handleShow}>
-            Cart ({productsCount}) Items
+          <Button className="cartButton d-sm-none mt-1" onClick={handleShow}>
+            Cart ({productsCount})
           </Button>
           <Navbar.Offcanvas
             id={`offcanvasNavbar-expand-sm`}
@@ -62,7 +62,7 @@ function BrandBar() {
                 <Nav.Link as={Link} to="/Login">
                   Login
                 </Nav.Link>
-                <Button onClick={handleShow}>
+                <Button className="cartButton" onClick={handleShow}>
                   Cart ({productsCount}) Items
                 </Button>
               </Nav>
