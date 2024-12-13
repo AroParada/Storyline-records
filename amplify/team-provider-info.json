@@ -10,6 +10,11 @@
       "StackName": "amplify-storylinerecords-dev-223257",
       "StackId": "arn:aws:cloudformation:us-east-1:288547371684:stack/amplify-storylinerecords-dev-223257/f57407f0-b902-11ef-a060-0e9f5cd7abfb",
       "AmplifyAppId": "d2rjzd56u696e3"
+    },
+    "categories": {
+      "auth": {
+        "storylineRecords": {}
+      }
     }
   }
 }
