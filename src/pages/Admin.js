@@ -1,12 +1,17 @@
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import Form from "react-bootstrap/Form";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Card,
+  Form,
+  ListGroup,
+} from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
 import AWS from "aws-sdk";
+
+import { CartContext } from "../CartContext";
 
 AWS.config.update({
   accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID, // Store keys in environment variables for security
@@ -21,6 +26,9 @@ export function Admin() {
   const image = useRef();
 
   const [imagePreview, setImagePreview] = useState(null);
+  const { products, loading } = useContext(CartContext);
+
+  console.log(products.title);
 
   const onImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
@@ -109,14 +117,13 @@ export function Admin() {
   };
 
   return (
-    <Container>
-      <Row>
-        <Col></Col>
-        <Col xs={8}>
+    <Container fluid>
+      <Row className="justify-content-center g-4">
+        <Col xs={12} sm={12} md={6}>
           <Card className="text-center adminCard">
             <Card.Header>Upload new product</Card.Header>
             <Card.Body>
-              <Card.Title>Add a new product</Card.Title>
+              <Card.Title>Add product</Card.Title>
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formArtistName">
                   <Form.Label>Artist name</Form.Label>
@@ -169,7 +176,20 @@ export function Admin() {
             <Card.Footer className="text-muted"></Card.Footer>
           </Card>
         </Col>
-        <Col></Col>
+        <Col xs={12} sm={12} md={6}>
+          <Card className="adminCard">
+            <Card.Header>Remove a product</Card.Header>
+            <Card.Body>
+              <Card.Title>Remove product</Card.Title>
+              <ListGroup>
+                {products.map((product, idx) => (
+                  <ListGroup.Item>{product.title}</ListGroup.Item>
+                ))}
+              </ListGroup>
+            </Card.Body>
+            <Card.Footer className="text-muted"></Card.Footer>
+          </Card>
+        </Col>
       </Row>
     </Container>
   );
