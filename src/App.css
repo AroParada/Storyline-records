@@ -34,7 +34,7 @@ html,
 body {
   position: relative;
   height: 100%;
-  background: #eee;
+  background: gainsboro;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 14px;
   color: #000;
@@ -99,5 +99,5 @@ body {
 }
 
 .cartButton {
-  background-color: #047D95 !important;
+  background-color: #047d95 !important;
 }
