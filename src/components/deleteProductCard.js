@@ -12,7 +12,7 @@ AWS.config.update({
 
 export default function DeleteProductCard() {
   const { products, loading } = useContext(CartContext);
-  const [modalShow, setModalShow] = useState(false); 
+  const [modalShow, setModalShow] = useState(false);
   const [clickedProductId, setClickedProductId] = useState("");
 
   const productClicked = (productId, productTitle) => {
@@ -29,10 +29,12 @@ export default function DeleteProductCard() {
           headers: {
             "Content-Type": "application/json",
           },
-        });
+        }
+      );
 
       if (response.ok) {
         alert("item deleted successfully");
+        setModalShow(false);
       } else {
         const error = await response.json();
         console.error("error deleting item", error);
