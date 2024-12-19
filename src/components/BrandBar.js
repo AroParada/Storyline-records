@@ -18,11 +18,14 @@ function BrandBar() {
   const [show, setShow] = useState(false); // show or hide modal
   const [showOffcanvas, setShowOffcanvas] = useState(false); // show or hide offcanvas
 
-  const handleModalClose = () => setShow(false);
-  const handleModalShow = () => setShow(true);
+  const handleModalToggle = () => {
+    setShow((prevShow) => !prevShow); // Toggles the value of `show`
+  };
 
-  const handleOffcanvasClose = () => setShowOffcanvas(false);
-  const handleOffcanvasShow = () => setShowOffcanvas(true);
+  const handleOffcanvasToggle = () => {
+    setShowOffcanvas((prevShowOffcanvas) => !prevShowOffcanvas); // Toffles value of 'showOffcanvas'
+  };
+
 
   const productsCount = cart.items.reduce(
     (sum, product) => sum + product.quantity,
@@ -41,13 +44,13 @@ function BrandBar() {
         <Container fluid>
           <Navbar.Toggle
             aria-controls={`offcanvasNavbar-expand-sm`}
-            onClick={handleOffcanvasShow}
+            onClick={handleOffcanvasToggle}
           />
           <Navbar.Brand href="/">Storyline Records &#128216;</Navbar.Brand>
 
           <Button
             className="cartButton d-sm-none mt-1"
-            onClick={handleModalShow}
+            onClick={handleModalToggle}
           >
             Cart ({productsCount})
           </Button>
@@ -56,7 +59,7 @@ function BrandBar() {
             aria-labelledby={`offcanvasNavbarLabel-expand-sm`}
             placement="start"
             show={showOffcanvas} // tied to state to show or not
-            onHide={handleOffcanvasClose} // To enable clicking outside to close
+            onHide={handleOffcanvasToggle} // To enable clicking outside to close
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-sm`}>
@@ -65,16 +68,16 @@ function BrandBar() {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-2">
-                <Nav.Link as={Link} to="/" onClick={handleOffcanvasClose}>
+                <Nav.Link as={Link} to="/" onClick={handleOffcanvasToggle}>
                   Home
                 </Nav.Link>
-                <Nav.Link as={Link} to="/Shop" onClick={handleOffcanvasClose}>
+                <Nav.Link as={Link} to="/Shop" onClick={handleOffcanvasToggle}>
                   Shop
                 </Nav.Link>
-                <Nav.Link as={Link} to="/Login" onClick={handleOffcanvasClose}>
+                <Nav.Link as={Link} to="/Login" onClick={handleOffcanvasToggle}>
                   Login
                 </Nav.Link>
-                <Button className="cartButton" onClick={handleModalShow}>
+                <Button className="cartButton" onClick={handleModalToggle}>
                   Cart ({productsCount}) Items
                 </Button>
               </Nav>
@@ -82,7 +85,7 @@ function BrandBar() {
           </Navbar.Offcanvas>
         </Container>
       </Navbar>
-      <Modal show={show} onHide={handleModalClose}>
+      <Modal show={show} onHide={handleModalToggle}>
         <Modal.Header closeButton>
           <Modal.Title>Shopping Cart</Modal.Title>
         </Modal.Header>
