@@ -23,9 +23,10 @@ function BrandBar() {
   };
 
   const handleOffcanvasToggle = () => {
-    setShowOffcanvas((prevShowOffcanvas) => !prevShowOffcanvas); // Toffles value of 'showOffcanvas'
+    if (window.innerWidth < 576) {
+      setShowOffcanvas((prevShowOffcanvas) => !prevShowOffcanvas);
+    }
   };
-
 
   const productsCount = cart.items.reduce(
     (sum, product) => sum + product.quantity,
