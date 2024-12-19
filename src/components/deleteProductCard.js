@@ -12,11 +12,36 @@ AWS.config.update({
 
 export default function DeleteProductCard() {
   const { products, loading } = useContext(CartContext);
-  const [modalShow, setModalShow] = useState(false);
+  const [modalShow, setModalShow] = useState(false); 
+  const [clickedProductId, setClickedProductId] = useState("");
 
   const productClicked = (productId, productTitle) => {
-    console.log(`ID: ${productId}, title: ${productTitle}`);
-    setModalShow(true);
+    setClickedProductId(productId); // store productId for deletion
+    setModalShow(true); // show modal confirmation
+  };
+
+  const deleteProduct = async (clickedProductId) => {
+    try {
+      const response = await fetch(
+        `https://1rsmflpz2m.execute-api.us-east-1.amazonaws.com/items/${clickedProductId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+      if (response.ok) {
+        alert("item deleted successfully");
+      } else {
+        const error = await response.json();
+        console.error("error deleting item", error);
+        alert("failed to delete item");
+      }
+    } catch (error) {
+      console.log("failed to delete product", error);
+      throw new Error("product delete failed");
+    }
   };
 
   return (
@@ -55,7 +80,9 @@ export default function DeleteProductCard() {
           <p>Are you sure you want to delete product from shop</p>
         </Modal.Body>
         <Modal.Footer>
-          <Button>Delete</Button>
+          <Button onClick={() => deleteProduct(clickedProductId)}>
+            Delete
+          </Button>
         </Modal.Footer>
       </Modal>
     </>
