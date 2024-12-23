@@ -40,7 +40,7 @@ function BrandBar() {
         variant="dark"
         key="sm"
         expand="sm"
-        className="bg-body-tertiary mb-3"
+        className="bg-body-tertiary"
       >
         <Container fluid>
           <Navbar.Toggle

@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import * as ReactDOM from "react-dom";
 import App from "./App";
+import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 // Amplify confiquration
 import { Amplify } from "aws-amplify";
