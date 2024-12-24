@@ -102,11 +102,11 @@ function BrandBar() {
                 ></CartProduct>
               ))}
               {/* tofixed adds only 2 values after the decimal */}
-              <h1>Total: {cart.getTotalCost().toFixed(2)}</h1>
+              <h2>Total: {cart.getTotalCost().toFixed(2)}</h2>
               <CheckoutButton />
             </>
           ) : (
-            <h1>There are no items in your cart!</h1>
+            <h2>There are no items in your cart!</h2>
           )}
         </Modal.Body>
       </Modal>

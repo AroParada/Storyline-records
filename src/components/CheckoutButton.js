@@ -38,7 +38,7 @@ const CheckoutButton = () => {
     }
   };
 
-  return <Button onClick={handleCheckout}>Checkout</Button>;
+  return <Button variant="success" onClick={handleCheckout}>Checkout</Button>;
 };
 
 export default CheckoutButton;

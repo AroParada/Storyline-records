@@ -16,13 +16,13 @@ function CartProduct(props) {
   // clean code later to render all information from cartcontext
   return (
     <Flex alignItems="flex-start">
-      <Image src={productData.image} alt={productData.title} width="8rem" />
-      <Flex direction="column" gap="xs">
-        <h3>{productData.title}</h3>
+      <Image src={productData.image} alt={productData.title} width="6rem" />
+      <Flex direction="column" gap="0rem">
+        <h5>{productData.title}</h5>
         <p>{quantity} total</p>
         <p>${(quantity * productData.price).toFixed(2)}</p>
         <Col sm="6">
-          <Button size="sm" onClick={() => deleteFromCart(id)}>
+          <Button variant="danger" size="sm" onClick={() => deleteFromCart(id)}>
             Remove
           </Button>
         </Col>
