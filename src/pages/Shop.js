@@ -16,13 +16,15 @@ function Shop() {
         <h1 class="text-xl font-bold">Welcome to the Store</h1>
       </div>
       <Container fluid>
-        <Row xs={1} md={3} className="g-4">
-          {products.map((product, idx) => (
-            <Col align="center" key={idx}>
-              <NewProductCard product={product} />
-            </Col>
-          ))}
-        </Row>
+        <div class="m-2 mb-5">
+          <Row xs={1} md={3} className="g-4">
+            {products.map((product, idx) => (
+              <Col align="center" key={idx}>
+                <NewProductCard product={product} />
+              </Col>
+            ))}
+          </Row>
+        </div>
       </Container>
     </>
   );
