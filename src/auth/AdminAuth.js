@@ -13,7 +13,6 @@ const AdminAuth = () => {
       try {
         const user = await Auth.currentAuthenticatedUser();
         setIsAuthenticated(true);
-        console.log("User:", user);
       } catch (err) {
         setIsAuthenticated(false);
         console.error("User not authenticated:", err);

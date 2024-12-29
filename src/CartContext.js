@@ -19,7 +19,7 @@ export function CartProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [cartDetails, setCartDetails] = useState([]);
 
-  console.log(cartDetails, 'cartdetails');
+  // console.log(cartDetails, 'cartdetails'); 
 
   function addOrUpdateCartItem(id, quantity) {
     const productData = getProductData(id);
