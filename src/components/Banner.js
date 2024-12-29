@@ -3,6 +3,7 @@ import storePicture from "../assets/record-store-featured-2160574280.jpg";
 
 export default function Banner() {
   return (
+    // this is tailwind css
     <div class="relative bg-neutral-800 p-8 text-start text-white w-full h-96 flex items-end">
       <img
         src={storePicture}

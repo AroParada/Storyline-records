@@ -50,7 +50,7 @@ export default function AddProductCard() {
     title.current.value = "";
     price.current.value = "";
     image.current.value = null;
-    setImagePreview(null)
+    setImagePreview(null);
   };
 
   const uploadImageToS3 = async (file) => {
@@ -107,7 +107,7 @@ export default function AddProductCard() {
   };
 
   return (
-    <Card className="text-center adminCard">
+    <Card border="dark" className="text-center adminCard">
       <Card.Header>Upload new product</Card.Header>
       <Card.Body>
         <Card.Title>Add product</Card.Title>
@@ -148,7 +148,14 @@ export default function AddProductCard() {
               ref={image}
             />
             {imagePreview === null ? null : (
-              <img className="previewImage" alt="preview" src={imagePreview} />
+              // this is a tailwind css class
+              <div class="d-flex justify-content-center">
+                <img
+                  className="previewImage"
+                  alt="preview"
+                  src={imagePreview}
+                />
+              </div>
             )}
           </Form.Group>
           <Button variant="primary" type="submit">

@@ -48,7 +48,7 @@ export default function DeleteProductCard() {
 
   return (
     <>
-      <Card className="adminCard">
+      <Card border="dark" className="adminCard">
         <Card.Header>Remove a product</Card.Header>
         <Card.Body>
           <Card.Title>Remove product</Card.Title>

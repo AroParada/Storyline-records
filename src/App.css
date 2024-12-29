@@ -12,6 +12,8 @@
   top: var(--amplify-components-authenticator-modal-top);
   left: var(--amplify-components-authenticator-modal-left);
   z-index: 1;
+  border-radius: 5px !important;
+  border: #000 1px solid !important;
 }
 
 .amplify-card {
@@ -25,7 +27,7 @@ html,
 body {
   position: relative;
   height: 100%;
-  background: gainsboro;
+  /* background: gainsboro; */
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 14px;
   color: #000;
@@ -34,10 +36,11 @@ body {
 }
 
 .swiper {
-  width: 100%;
+  width: 100% !important;
   padding-top: 50px;
   padding-bottom: 50px;
   background-color: gainsboro !important;
+  border:#000 1px solid;
   padding: 40px !important;
   margin-bottom: 40px;
 }
@@ -84,7 +87,6 @@ body {
   place-self: center;
   height: 100%;
   width: 400px;
-  border-color: none !important;
   box-shadow: 5px 2px 15px 2px hwb(0 83% 17%);
   margin: 20px;
 }
