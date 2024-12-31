@@ -15,6 +15,7 @@ export default function AddProductCard() {
   const title = useRef();
   const price = useRef();
   const image = useRef();
+  const inventory = useRef(); // Add inventory reference
 
   const [imagePreview, setImagePreview] = useState(null);
 
@@ -34,6 +35,7 @@ export default function AddProductCard() {
       title: title.current.value.trim(),
       price: parseFloat(price.current.value.trim()),
       image: image.current.files[0],
+      inventory: parseInt(inventory.current.value.trim()), // Add inventory value
     };
 
     // uploads the image to s3 and get the URL
@@ -51,6 +53,7 @@ export default function AddProductCard() {
     price.current.value = "";
     image.current.value = null;
     setImagePreview(null);
+    inventory.current.value = ""; // Reset inventory value
   };
 
   const uploadImageToS3 = async (file) => {
@@ -86,6 +89,7 @@ export default function AddProductCard() {
         title: formValues.title,
         price: formValues.price,
         image: formValues.image,
+        inventory: formValues.inventory, // Add inventory value
       };
 
       const response = await fetch(
@@ -157,6 +161,15 @@ export default function AddProductCard() {
                 />
               </div>
             )}
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formPrice">
+            <Form.Label>Inventory</Form.Label>
+            <Form.Control
+              required
+              type="number"
+              placeholder="Inventory"
+              ref={inventory}
+            />
           </Form.Group>
           <Button variant="primary" type="submit">
             Submit
