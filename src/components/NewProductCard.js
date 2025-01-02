@@ -56,6 +56,7 @@ function NewProductCard(props) {
                 </Col>
                 <Col sm="3">
                   <Button
+                    isDisabled={productQuantity >= product.inventory}
                     sm="6"
                     onClick={() => cart.addOneToCart(product.id)}
                     className="mx-2"
