@@ -6,6 +6,7 @@ import { CartContext } from "../CartContext";
 function Shop() {
   const { products, loading } = useContext(CartContext);
 
+
   if (loading) {
     return <div>Loading...</div>;
   }

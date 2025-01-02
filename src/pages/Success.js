@@ -6,7 +6,7 @@ function SuccessPage() {
   return (
     <>
       <div class="bg-neutral-800 p-8 text-start text-white w-full h-35 ">
-        <h1 class="text-xl font-bold"></h1>
+        <h1 class="text-xl font-bold">Success</h1>
       </div>
       <Container
         fluid

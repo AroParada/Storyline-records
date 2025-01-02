@@ -11,14 +11,24 @@ function NewProductCard(props) {
   const cart = useContext(CartContext);
   const productQuantity = cart.getProductQuantity(product.id);
 
+  function checkStock(product) {
+      if (product.inventory === 0 || product.inventory === undefined) {
+        console.log("Out of Stock");
+        return <Badge>Out of Stock</Badge>;
+      } else if (product.inventory < 10 && product.inventory > 0) {
+        console.log("Low Stock");
+        return <Badge variation="error">Low Stock</Badge>;
+      }
+
+    return null;
+  }
+
   return (
     <Card variation="outlined">
       <Flex alignItems="flex-start">
         <Image src={product.image} alt="Amplify" width="10rem" />
         <Flex direction="column" gap="xs">
-          <Flex>
-            <Badge variation="success">New</Badge>
-          </Flex>
+          <Flex>{checkStock(product)}</Flex>
           <Text fontSize="large" fontWeight="semibold">
             {product.title}
           </Text>
