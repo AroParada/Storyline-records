@@ -18,6 +18,9 @@ function NewProductCard(props) {
       } else if (product.inventory < 10 && product.inventory > 0) {
         console.log("Low Stock");
         return <Badge variation="error">Low Stock</Badge>;
+      } else if (product.inventory >= 10) {
+        console.log("In Stock");
+        return <Badge variation="success">New</Badge>;
       }
 
     return null;
@@ -70,7 +73,8 @@ function NewProductCard(props) {
               </Button>
             </>
           ) : (
-            <Button
+            <Button 
+              isDisabled={product.inventory === 0 || product.inventory === undefined}
               variant="primary"
               onClick={() => cart.addOneToCart(product.id)}
             >
