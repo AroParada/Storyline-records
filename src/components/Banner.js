@@ -12,7 +12,7 @@ export default function Banner() {
       />
       <div className="relative z-10">
         <h1 class="text-xxl font-bold align-bottom">Winter Sale</h1>
-        <Button variant="outline-light" size="lg" className="ms-2">
+        <Button href="/Shop" variant="outline-light" size="lg" className="ms-2">
           Shop Now
         </Button>
       </div>
