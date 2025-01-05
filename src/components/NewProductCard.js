@@ -12,16 +12,13 @@ function NewProductCard(props) {
   const productQuantity = cart.getProductQuantity(product.id);
 
   function checkStock(product) {
-      if (product.inventory === 0 || product.inventory === undefined) {
-        console.log("Out of Stock");
-        return <Badge>Out of Stock</Badge>;
-      } else if (product.inventory < 10 && product.inventory > 0) {
-        console.log("Low Stock");
-        return <Badge variation="error">Low Stock</Badge>;
-      } else if (product.inventory >= 10) {
-        console.log("In Stock");
-        return <Badge variation="success">New</Badge>;
-      }
+    if (product.inventory === 0 || product.inventory === undefined) {
+      return <Badge>Out of Stock</Badge>;
+    } else if (product.inventory < 10 && product.inventory > 0) {
+      return <Badge variation="error">Low Stock</Badge>;
+    } else if (product.inventory >= 10) {
+      return <Badge variation="success">New</Badge>;
+    }
 
     return null;
   }
@@ -41,29 +38,27 @@ function NewProductCard(props) {
           </Text>
           {productQuantity > 0 ? (
             <>
-              <Form as={Row}>
+              <Form className="d-flex justify-content-center" as={Row}>
                 <Form.Label column="true" sm="6">
                   In Cart: {productQuantity}{" "}
                 </Form.Label>
-                <Col sm="3">
-                  <Button
-                    sm="6"
-                    onClick={() => cart.removeOneFromCart(product.id)}
-                    className="mx-2"
-                  >
-                    -
-                  </Button>
-                </Col>
-                <Col sm="3">
-                  <Button
-                    isDisabled={productQuantity >= product.inventory}
-                    sm="6"
-                    onClick={() => cart.addOneToCart(product.id)}
-                    className="mx-2"
-                  >
-                    +
-                  </Button>
-                </Col>
+                <Row className="d-flex justify-content-center">
+                  <Col xs="6" className="d-flex justify-content-center">
+                    <Button
+                      onClick={() => cart.removeOneFromCart(product.id)}
+                      className="mx-2 flex-grow-1"
+                    >
+                      -
+                    </Button>
+                    <Button
+                      isDisabled={productQuantity >= product.inventory}
+                      onClick={() => cart.addOneToCart(product.id)}
+                      className="mx-2 flex-grow-1"
+                    >
+                      +
+                    </Button>
+                  </Col>
+                </Row>
               </Form>
               <Button
                 variation="link"
@@ -74,8 +69,10 @@ function NewProductCard(props) {
               </Button>
             </>
           ) : (
-            <Button 
-              isDisabled={product.inventory === 0 || product.inventory === undefined}
+            <Button
+              isDisabled={
+                product.inventory === 0 || product.inventory === undefined
+              }
               variant="primary"
               onClick={() => cart.addOneToCart(product.id)}
             >
