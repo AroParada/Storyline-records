@@ -37,11 +37,10 @@ body {
 
 .swiper {
   width: 100% !important;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 30px !important;
+  padding-bottom: 70px !important;
   background-color: gainsboro !important;
   border:#000 1px solid;
-  padding: 40px !important;
   margin-bottom: 40px;
 }
 

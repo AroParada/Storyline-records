@@ -1,4 +1,5 @@
 import React from "react";
+import swiperAlbums from "../data/swipperAlbums";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -37,55 +38,15 @@ export default function App() {
         initialSlide={middleIndex - 1}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <img
-            alt="albumCover"
-            src="https://fictionalrecords004232c4232647c6a10668cb4de31c163357-staging.s3.amazonaws.com/white-stripes.jpg"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            alt="albumCover"
-            src="https://fictionalrecords004232c4232647c6a10668cb4de31c163357-staging.s3.amazonaws.com/107347-597a0e4334ba6-l.jpg"
-          />
-          <h3> </h3>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            alt="albumCover"
-            src="https://fictionalrecords004232c4232647c6a10668cb4de31c163357-staging.s3.amazonaws.com/61Z-qRw050L._SL1076_.jpg"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            alt="albumCover"
-            src="https://fictionalrecords004232c4232647c6a10668cb4de31c163357-staging.s3.amazonaws.com/Like-Clockwork-Queens-of-the-Stone-Age-album-cover.jpg"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            alt="albumCover"
-            src="https://fictionalrecords004232c4232647c6a10668cb4de31c163357-staging.s3.amazonaws.com/king-krule-ooz.jpg"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            alt="albumCover"
-            src="https://fictionalrecords004232c4232647c6a10668cb4de31c163357-staging.s3.amazonaws.com/432374.jpg"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            alt="albumCover"
-            src="https://fictionalrecords004232c4232647c6a10668cb4de31c163357-staging.s3.amazonaws.com/oh-sees-orc.jpg"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            alt="albumCover"
-            src="https://fictionalrecords004232c4232647c6a10668cb4de31c163357-staging.s3.amazonaws.com/5ad0b35dc466b1bd1d6053c560a25c12.jpg"
-          />
-        </SwiperSlide>
+        {Object.values(swiperAlbums).map((album, index) => (
+          <SwiperSlide>
+            <img alt="albumCover" src={album.image} />
+            <div class="text-gray-900 text-center pt-2 hover:text-white">
+              <h5 class="mb-0">{album.title}</h5>
+              <p class="pt-0">{album.artist}</p>
+            </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </>
   );
