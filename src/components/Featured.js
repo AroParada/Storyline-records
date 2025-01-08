@@ -1,7 +1,4 @@
-import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button";
+import { Card, Col, Row, Button } from "react-bootstrap";
 import Live from "../assets/130907063709-23-punk-history-restricted.jpg";
 import Merchandise from "../assets/dbbf3a60c162a140f29a630964f9b516.jpg";
 import Books from "../assets/overflowing-bookcases.jpg";

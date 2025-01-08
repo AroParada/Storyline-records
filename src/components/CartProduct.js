@@ -1,5 +1,4 @@
-import Button from "react-bootstrap/Button";
-import { Col } from "react-bootstrap";
+import {Button, Col } from "react-bootstrap";
 import { Image, Flex } from "@aws-amplify/ui-react";
 import { useContext } from "react";
 import { CartContext } from "../CartContext";
