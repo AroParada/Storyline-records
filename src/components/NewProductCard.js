@@ -12,15 +12,14 @@ function NewProductCard(props) {
   const productQuantity = cart.getProductQuantity(product.id);
 
   function checkStock(product) {
-    if (product.inventory === 0 || product.inventory === undefined) {
-      return <Badge>Out of Stock</Badge>;
-    } else if (product.inventory < 10 && product.inventory > 0) {
-      return <Badge variation="error">Low Stock</Badge>;
-    } else if (product.inventory >= 10) {
-      return <Badge variation="success">New</Badge>;
+    const { inventory } = product;
+    if (!inventory) {
+      return <Badge color="error">Out of Stock</Badge>;
     }
-
-    return null;
+    if (inventory < 10) {
+      return <Badge variation="error">Low Stock</Badge>;
+    }
+    return <Badge variation="success">New</Badge>;
   }
 
   return (
