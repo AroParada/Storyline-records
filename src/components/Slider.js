@@ -39,7 +39,7 @@ export default function App() {
         className="mySwiper"
       >
         {Object.values(swiperAlbums).map((album, index) => (
-          <SwiperSlide>
+          <SwiperSlide key={index}>
             <img alt="albumCover" src={album.image} />
             <div class="text-gray-900 text-center pt-2 hover:text-white">
               <h5 class="mb-0">{album.title}</h5>
