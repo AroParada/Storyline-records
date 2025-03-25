@@ -15,10 +15,10 @@ function Shop() {
       <div className="bg-neutral-800 p-8 text-start text-white w-full h-35 ">
         <h1 className="text-xl font-bold">Welcome to the Store</h1>
       </div>
-      <div className="px-24 m-16">
-        <Row xs={1} md={3} lg={4} className="g-4">
+      <div className="mx-6 my-8 md:my-0 md:mx-0 md:m-12 lg:m-16 xl:px-24">
+        <Row xs={1} md={2} lg={2} xl={4} className="g-4">
           {products.map((product, idx) => (
-            <Col align="center" key={idx}>
+            <Col key={idx} align="center">
               <NewProductCard product={product} />
             </Col>
           ))}
