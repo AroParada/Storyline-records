@@ -19,7 +19,7 @@ const swiperAlbums = {
   },
   3: {
     image:
-      "https://fictionalrecords004232c4232647c6a10668cb4de31c163357-staging.s3.amazonaws.com/Like-Clockwork-Queens-of-the-Stone-Age-album-cover.jpg",
+      "https://fictionalrecords004232c4232647c6a10668cb4de31c163357-staging.s3.us-east-1.amazonaws.com/slider/Like-Clockwork-Queens-of-the-Stone-Age-album-cover.jpg",
     title: "Like Clockwork",
     artist: "Queens of the Stone Age",
   },
@@ -37,7 +37,7 @@ const swiperAlbums = {
   },
   6: {
     image:
-      "https://fictionalrecords004232c4232647c6a10668cb4de31c163357-staging.s3.amazonaws.com/oh-sees-orc.jpg",
+      "https://fictionalrecords004232c4232647c6a10668cb4de31c163357-staging.s3.us-east-1.amazonaws.com/slider/oh-sees-orc.jpg",
     title: "Orc",
     artist: "Oh Sees",
   },
