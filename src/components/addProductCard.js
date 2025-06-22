@@ -4,11 +4,6 @@ import { Button, Card, Form } from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
 import AWS from "aws-sdk";
 
-AWS.config.update({
-  accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID, // Store keys in environment variables for security
-  secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
-  region: "us-east-1", // Replace with your region
-});
 
 export default function AddProductCard() {
   const artist = useRef();
